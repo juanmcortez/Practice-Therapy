@@ -11,5 +11,19 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js(
+    [
+        'resources/js/practice_therapy.js',
+        'resources/js/main.js'
+    ],
+    'public/js')
+    .extract(
+        [
+            'vue',
+            'axios',
+            'popper.js'
+        ]
+    )
+    .sass('resources/sass/practice_therapy.scss', 'public/css')
+    .sass('resources/sass/theme.scss', 'public/css')
+    .version();
