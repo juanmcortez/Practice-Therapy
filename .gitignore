@@ -23,6 +23,7 @@
 public/css/*
 public/js/*
 /config/ide-helper.php
+/public/mix-manifest.json
 ### CUSTOM ###
 
 
