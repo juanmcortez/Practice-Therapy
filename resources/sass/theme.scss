@@ -47,4 +47,10 @@
         margin-left: -12rem;
     }
 }
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .15s ease;
+}
+.fade-enter, .fade-leave-active {
+    opacity: 0;
+}
 /* **** Original CSS Styling **** */
