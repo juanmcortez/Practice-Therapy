@@ -25,15 +25,14 @@
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
-        <div class="content">
-            <div class="title m-b-md">
-                {{ config('app.name', 'Laravel') }}
-            </div>
-            <div class="links">
-                <strong>{{ config('app.description', 'Laravel') }}</strong>
-            </div>
-        </div>
+
+    <noscript>
+        <strong>
+            {{ __("We're sorry but Practice Therapy doesn't work properly without JavaScript enabled. Please enable it and refresh the page.") }}
+        </strong>
+    </noscript>
+    <div id="PracticeTherapy">
+        <practicetherapy></practicetherapy>
     </div>
 
     <script src="{{ mix('js/manifest.js') }}"></script>

@@ -1,3 +1,4 @@
+// require("dotenv").config();
 const mix = require('laravel-mix');
 
 /*
@@ -11,17 +12,15 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js(
-    [
-        'resources/js/practice_therapy.js',
-        'resources/js/main.js'
-    ],
-    'public/js')
+mix.js('resources/js/practice_therapy.js', 'public/js')
     .extract(
         [
+            'lodash',
+            'popper.js',
+            'jquery',
             'vue',
-            'axios',
-            'popper.js'
+            'vue-router',
+            'axios'
         ]
     )
     .sass('resources/sass/practice_therapy.scss', 'public/css')
