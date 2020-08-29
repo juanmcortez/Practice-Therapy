@@ -20,8 +20,10 @@
 *.*~
 /public/css
 /public/js
+public/fonts
 public/css/*
 public/js/*
+public/fonts/*
 /config/ide-helper.php
 /public/mix-manifest.json
 ### CUSTOM ###
