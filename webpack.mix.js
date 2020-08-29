@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/practice_therapy.js', 'public/js')
+mix.js('resources/assets/js/practice_therapy.js', 'public/js')
     .extract(
         [
             'lodash',
@@ -23,6 +23,6 @@ mix.js('resources/js/practice_therapy.js', 'public/js')
             'axios'
         ]
     )
-    .sass('resources/sass/practice_therapy.scss', 'public/css')
-    .sass('resources/sass/theme.scss', 'public/css')
+    .sass('resources/assets/sass/practice_therapy.scss', 'public/css')
+    .sass('resources/assets/sass/theme.scss', 'public/css')
     .version();
