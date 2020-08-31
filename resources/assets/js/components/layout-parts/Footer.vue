@@ -2,11 +2,18 @@
     <footer class="py-4 bg-light mt-auto">
         <div class="container-fluid">
             <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                <div class="text-muted">&nbsp;</div>
                 <div>
-                    <a href="#">Privacy Policy</a>
-                    &middot;
-                    <a href="#">Terms &amp; Conditions</a>
+                    <router-link
+                        active-class="active"
+                        exact
+                        :to="{ name: 'privacy' }"
+                    >Privacy Policy</router-link>&middot;
+                    <router-link
+                        active-class="active"
+                        exact
+                        :to="{ name: 'termsconditions' }"
+                    >Terms &amp; Conditions</router-link>
                 </div>
             </div>
         </div>

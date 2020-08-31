@@ -11,7 +11,7 @@
                 <main>
                     <div class="container-fluid">
                         <transition name="fade" mode="out-in">
-                            <router-view class="view"></router-view>
+                            <router-view :key="$route.path" class="view"></router-view>
                         </transition>
                     </div>
                 </main>

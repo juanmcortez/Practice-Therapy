@@ -129,12 +129,69 @@
                         <router-link
                             active-class="active"
                             exact
-                            :to="{ name: 'payments' }"
+                            :to="{ name: 'letters' }"
+                            class="nav-link"
+                        >
+                            <div class="PT-nav-link-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>Letters
+                        </router-link>
+                        <router-link
+                            active-class="active"
+                            exact
+                            :to="{ name: 'statements' }"
+                            class="nav-link"
+                        >
+                            <div class="PT-nav-link-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>Statements
+                        </router-link>
+                        <router-link
+                            active-class="active"
+                            exact
+                            :to="{ name: 'awos' }"
+                            class="nav-link"
+                        >
+                            <div class="PT-nav-link-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>Automatic Write Off's
+                        </router-link>
+                    </nav>
+                </div>
+
+                <!-- <div class="PT-sidenav-menu-heading">&nbsp;</div> -->
+
+                <a
+                    class="nav-link collapsed"
+                    href="#"
+                    data-toggle="collapse"
+                    data-target="#collapsePayments"
+                    aria-expanded="false"
+                    aria-controls="collapsePayments"
+                >
+                    <div class="PT-nav-link-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>Payments
+                    <div class="PT-sidenav-collapse-arrow">
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                </a>
+                <div
+                    class="collapse"
+                    id="collapsePayments"
+                    aria-labelledby="headingOne"
+                    data-parent="#sidenavAccordion"
+                >
+                    <nav class="PT-sidenav-menu-nested nav">
+                        <router-link
+                            active-class="active"
+                            exact
+                            :to="{ name: 'post-payments' }"
                             class="nav-link"
                         >
                             <div class="PT-nav-link-icon">
                                 <i class="fas fa-hand-holding-usd"></i>
-                            </div>Payments
+                            </div>Post a payment
                         </router-link>
                         <router-link
                             active-class="active"
@@ -202,6 +259,53 @@
                     class="nav-link collapsed"
                     href="#"
                     data-toggle="collapse"
+                    data-target="#collapseTools"
+                    aria-expanded="false"
+                    aria-controls="collapseTools"
+                >
+                    <div class="PT-nav-link-icon">
+                        <i class="fas fa-clipboard"></i>
+                    </div>Tools
+                    <div class="PT-sidenav-collapse-arrow">
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                </a>
+                <div
+                    class="collapse"
+                    id="collapseTools"
+                    aria-labelledby="headingOne"
+                    data-parent="#sidenavAccordion"
+                >
+                    <nav class="PT-sidenav-menu-nested nav">
+                        <router-link
+                            active-class="active"
+                            exact
+                            :to="{ name: 'elegibility' }"
+                            class="nav-link"
+                        >
+                            <div class="PT-nav-link-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>Elegibility
+                        </router-link>
+                        <router-link
+                            active-class="active"
+                            exact
+                            :to="{ name: 'elegibility-import' }"
+                            class="nav-link"
+                        >
+                            <div class="PT-nav-link-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>Elegibility Import
+                        </router-link>
+                    </nav>
+                </div>
+
+                <!-- <div class="PT-sidenav-menu-heading">&nbsp;</div> -->
+
+                <a
+                    class="nav-link collapsed"
+                    href="#"
+                    data-toggle="collapse"
                     data-target="#collapseReports"
                     aria-expanded="false"
                     aria-controls="collapseReports"
@@ -223,22 +327,32 @@
                         <router-link
                             active-class="active"
                             exact
-                            :to="{ name: 'reports' }"
+                            :to="{ name: 'agedARentrydate' }"
                             class="nav-link"
                         >
                             <div class="PT-nav-link-icon">
                                 <i class="fas fa-chart-bar"></i>
-                            </div>Reports
+                            </div>Aged AR by Entry Date
                         </router-link>
                         <router-link
                             active-class="active"
                             exact
-                            :to="{ name: 'elegibility' }"
+                            :to="{ name: 'paymadjcharges' }"
                             class="nav-link"
                         >
                             <div class="PT-nav-link-icon">
-                                <i class="fas fa-user-check"></i>
-                            </div>Elegibility
+                                <i class="fas fa-chart-bar"></i>
+                            </div>Paym. and Adj. to Charges
+                        </router-link>
+                        <router-link
+                            active-class="active"
+                            exact
+                            :to="{ name: 'denials' }"
+                            class="nav-link"
+                        >
+                            <div class="PT-nav-link-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>Denials
                         </router-link>
                     </nav>
                 </div>
@@ -254,8 +368,11 @@
                 </router-link>-->
             </div>
         </div>
-        <div class="PT-sidenav-footer">
-            <div class="small">Logged in as:</div>&nbsp;
+        <div class="PT-sidenav-footer text-center">
+            <div class="small">
+                <span class="mr-2 text-info">v1.1.0</span>
+                <span class="ml-2 text-muted">&copy; Juan M. Cortéz - 2020</span>
+            </div>
         </div>
     </nav>
 </template>
