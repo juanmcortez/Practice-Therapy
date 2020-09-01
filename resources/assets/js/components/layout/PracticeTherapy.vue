@@ -1,6 +1,7 @@
 <template>
     <div :class="newClass+' mainlayout'">
         <navbar @toggle="sideBar()"></navbar>
+        <loadbar :percentage="100"></loadbar>
 
         <div id="PTLayoutSidebar">
             <div id="PTLayoutSidebar_nav">
@@ -23,6 +24,7 @@
 
 <script>
 import Navbar from "../layout-parts/Navbar";
+import Loadbar from "../layout-parts/Loadbar";
 import Sidebar from "../layout-parts/Sidebar";
 import Footer from "../layout-parts/Footer";
 
@@ -30,6 +32,7 @@ export default {
     name: "PracticeTherapy",
     components: {
         navbar: Navbar,
+        loadbar: Loadbar,
         sidebar: Sidebar,
         footbar: Footer,
     },
