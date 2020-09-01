@@ -2,7 +2,7 @@
     <nav class="PT-sidenav accordion PT-sidenav-dark" id="sidenavAccordion">
         <div class="PT-sidenav-menu">
             <div class="nav">
-                <div class="PT-sidenav-menu-heading">&nbsp;</div>
+                <div class="PT-sidenav-menu-heading py-0">&nbsp;</div>
 
                 <router-link
                     active-class="active"
