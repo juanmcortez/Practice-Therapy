@@ -1,7 +1,8 @@
 <template>
     <div :class="newClass+' mainlayout'">
         <navbar @toggle="sideBar()"></navbar>
-        <loadbar :percentage="100"></loadbar>
+
+        <loadbar :percentage="0"></loadbar>
 
         <div id="PTLayoutSidebar">
             <div id="PTLayoutSidebar_nav">
