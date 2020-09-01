@@ -20,7 +20,6 @@ export default {
         return {
             maxval: 100,
             minval: 0,
-            percentage: 0,
         };
     },
 };
