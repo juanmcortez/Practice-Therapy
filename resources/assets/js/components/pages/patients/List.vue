@@ -7,7 +7,7 @@
             </li>
             <li class="breadcrumb-item active" v-html="pageTitle"></li>
         </ol>
-        <table class="table table-bordered table-hover table-striped table-responsive">
+        <table class="table table-bordered table-hover table-striped">
             <thead>
                 <tr>
                     <th>Name</th>
