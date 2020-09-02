@@ -18,9 +18,9 @@
             </thead>
             <tbody>
                 <tr v-for="patient in patientList" :key="patient.pid">
-                    <td v-html="patient.p_name"></td>
-                    <td v-html="patient.p_dob"></td>
-                    <td v-html="patient.p_extpid"></td>
+                    <td v-html="patient.last_name+', '+patient.first_name+' '+patient.middle_name"></td>
+                    <td v-html="patient.dob"></td>
+                    <td v-html="patient.ext"></td>
                     <td v-html="patient.pid"></td>
                 </tr>
             </tbody>
