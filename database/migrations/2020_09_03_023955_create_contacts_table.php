@@ -16,6 +16,8 @@ class CreateContactsTable extends Migration
         Schema::create('patients_contact', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedInteger('patient_id')->nullable();
+
             $table->string('relation', 9)->nullable()->comment('mother / father / family / guardian / emergency');
 
             $table->string('last_name', 64)->nullable();

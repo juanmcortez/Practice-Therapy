@@ -32,6 +32,7 @@ $factory->define(Selection::class, function (Faker $faker) {
 
     return [
         // Patient data
+        'patient_id'    => 0,
         'type'          => $typeVal,
         'selection'     => $typeSel
     ];

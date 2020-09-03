@@ -14,6 +14,7 @@ $factory->define(Contact::class, function (Faker $faker) {
 
     return [
         // Patient data
+        'patient_id'    => 0,
         'relation'      => $relation,
         'last_name'     => $faker->lastName,
         'first_name'    => ($rndSex == 'male') ? $faker->firstNameMale : $faker->firstNameFemale,

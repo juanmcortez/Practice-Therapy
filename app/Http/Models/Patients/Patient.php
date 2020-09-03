@@ -24,8 +24,8 @@ class Patient extends Model
      * @var array
      */
     protected $hidden = [
-        'address_id', 'contact_id', 'identity_id', 'employment_id', 'misc_id',
-        'option_id', 'selection_id', 'created_at', 'updated_at', 'deleted_at'
+        'address_id', 'identity_id', 'employment_id',
+        'created_at', 'updated_at', 'deleted_at'
     ];
 
 
@@ -34,10 +34,7 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'ext_id', 'address_id', 'contact_id', 'employment_id',
-        'identity_id', 'misc_id', 'option_id', 'selection_id'
-    ];
+    protected $fillable = ['ext_id', 'address_id', 'employment_id', 'identity_id'];
 
 
     /**
@@ -62,7 +59,7 @@ class Patient extends Model
     }
     public function contact()
     {
-        return $this->hasOne(Contact::class, 'id', 'contact_id');
+        return $this->hasMany(Contact::class, 'patient_id', 'pid');
     }
     public function employment()
     {
@@ -74,14 +71,14 @@ class Patient extends Model
     }
     public function misc()
     {
-        return $this->hasOne(Misc::class, 'id', 'misc_id');
+        return $this->hasMany(Misc::class, 'patient_id', 'pid');
     }
     public function option()
     {
-        return $this->hasOne(Option::class, 'id', 'option_id');
+        return $this->hasMany(Option::class, 'patient_id', 'pid');
     }
     public function selection()
     {
-        return $this->hasOne(Selection::class, 'id', 'selection_id');
+        return $this->hasMany(Selection::class, 'patient_id', 'pid');
     }
 }

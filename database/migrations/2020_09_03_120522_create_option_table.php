@@ -16,6 +16,8 @@ class CreateOptionTable extends Migration
         Schema::create('patients_option', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedInteger('patient_id')->nullable();
+
             $table->string('type', 18)->nullable()->comment('language / race / ethnicity / family_size / financial_date / monthly_income / homeless / interpreter / migrant / referral_src / vfc');
 
             $table->string('option', 128)->nullable();

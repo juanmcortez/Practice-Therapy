@@ -20,11 +20,7 @@ class CreatePatientsTable extends Migration
 
             $table->unsignedInteger('identity_id')->nullable();
             $table->unsignedInteger('address_id')->nullable();
-            $table->unsignedInteger('contact_id')->nullable();
             $table->unsignedInteger('employment_id')->nullable();
-            $table->unsignedInteger('selection_id')->nullable();
-            $table->unsignedInteger('option_id')->nullable();
-            $table->unsignedInteger('misc_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
