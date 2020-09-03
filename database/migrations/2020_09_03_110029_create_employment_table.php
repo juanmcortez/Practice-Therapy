@@ -16,7 +16,7 @@ class CreateEmploymentTable extends Migration
         Schema::create('patients_employment', function (Blueprint $table) {
             $table->id();
 
-            $table->string('occupation', 64)->nullable();
+            $table->string('occupation', 128)->nullable();
 
             $table->string('last_name', 64)->nullable();
             $table->string('first_name', 64)->nullable();
