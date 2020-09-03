@@ -23,7 +23,10 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $hidden = ['identity_id', 'created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = [
+        'address_id', 'contact_id', 'identity_id', 'employment_id', 'misc_id',
+        'option_id', 'selection_id', 'created_at', 'updated_at', 'deleted_at'
+    ];
 
 
     /**
@@ -31,7 +34,10 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $fillable = ['ext_id', 'identity_id'];
+    protected $fillable = [
+        'ext_id', 'address_id', 'contact_id', 'employment_id',
+        'identity_id', 'misc_id', 'option_id', 'selection_id'
+    ];
 
 
     /**
@@ -39,16 +45,43 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $with = ['identity'];
+    protected $with = [
+        'address', 'contact', 'employment',
+        'identity', 'misc', 'option', 'selection'
+    ];
 
 
     /**
-     * Info relationships for the patient
+     * Relationships for the patient
      *
      * @return void
      */
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'id', 'address_id');
+    }
+    public function contact()
+    {
+        return $this->hasOne(Contact::class, 'id', 'contact_id');
+    }
+    public function employment()
+    {
+        return $this->hasOne(Employment::class, 'id', 'employment_id');
+    }
     public function identity()
     {
         return $this->hasOne(Identity::class, 'id', 'identity_id');
+    }
+    public function misc()
+    {
+        return $this->hasOne(Misc::class, 'id', 'misc_id');
+    }
+    public function option()
+    {
+        return $this->hasOne(Option::class, 'id', 'option_id');
+    }
+    public function selection()
+    {
+        return $this->hasOne(Selection::class, 'id', 'selection_id');
     }
 }
