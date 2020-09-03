@@ -39,8 +39,8 @@ class Selection extends Model
      *
      * @return void
      */
-    public function selection()
+    public function patient()
     {
-        return $this->belongsTo(Patient::class, 'id', 'employment_id');
+        return $this->belongsTo(Patient::class, 'id', 'selection_id');
     }
 }
