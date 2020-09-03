@@ -15,15 +15,16 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->bigIncrements('pid')->unique();
-            $table->string('ext', 64)->default('xx-xxxx-xxxx');
 
-            $table->string('last_name', 64);
-            $table->string('first_name', 64);
-            $table->string('middle_name', 64)->nullable();
+            $table->string('ext_id', 64)->default('xx-xxxx-xxxx');
 
-            $table->date('dob')->useCurrent();
-
-            $table->index(['last_name', 'first_name', 'dob']);
+            $table->unsignedInteger('identity_id')->nullable();
+            $table->unsignedInteger('address_id')->nullable();
+            $table->unsignedInteger('contact_id')->nullable();
+            $table->unsignedInteger('employment_id')->nullable();
+            $table->unsignedInteger('selection_id')->nullable();
+            $table->unsignedInteger('option_id')->nullable();
+            $table->unsignedInteger('misc_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

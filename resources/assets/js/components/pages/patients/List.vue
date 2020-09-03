@@ -18,13 +18,19 @@
             </thead>
             <tbody>
                 <tr v-for="patient in patientList" :key="patient.pid">
-                    <td v-html="patient.last_name+', '+patient.first_name+' '+patient.middle_name"></td>
-                    <td v-html="patient.dob"></td>
-                    <td v-html="patient.ext"></td>
+                    <td
+                        v-html="patient.identity.last_name+', '+patient.identity.first_name+' '+patient.identity.middle_name"
+                    ></td>
+                    <td v-html="patient.identity.dob"></td>
+                    <td v-html="patient.ext_id"></td>
                     <td v-html="patient.pid"></td>
                 </tr>
             </tbody>
         </table>
+        <small
+            class="text-muted"
+            v-html="'Total: '+totalnum+' | Viewing: '+perpages+' | Pages: '+totalpag"
+        ></small>
     </div>
 </template>
 
@@ -35,12 +41,18 @@ export default {
         return {
             pageTitle: "",
             patientList: "",
+            totalnum: 0,
+            perpages: 0,
+            totalpag: 0,
         };
     },
     methods: {
         getPatientList() {
             axios.get("/api/patients/list").then((response) => {
-                this.patientList = response.data;
+                this.patientList = response.data.data;
+                this.totalnum = response.data.total;
+                this.perpages = response.data.per_page;
+                this.totalpag = response.data.last_page;
             });
         },
     },
