@@ -9,21 +9,31 @@
         </ol>
         <table class="table table-bordered table-hover table-striped">
             <thead>
-                <tr>
-                    <th>Name</th>
+                <tr class="text-center">
+                    <th class="text-left">Name</th>
                     <th>DOB</th>
+                    <th>SSN</th>
+                    <th>Accession #</th>
+                    <th colspan="2">Phone</th>
                     <th>Ext. PID</th>
                     <th>PID</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="patient in patientList" :key="patient.pid">
+                <tr class="text-center" v-for="patient in patientList" :key="patient.pid">
                     <td
+                        class="text-left"
                         v-html="patient.identity.last_name+', '+patient.identity.first_name+' '+patient.identity.middle_name"
                     ></td>
                     <td v-html="patient.identity.dob"></td>
+                    <td v-html="patient.identity.ssn"></td>
+                    <td>&nbsp;</td>
+                    <td v-html="patient.contact.phone"></td>
+                    <td class="text-capitalize border-left-0" v-html="patient.contact.type"></td>
                     <td v-html="patient.ext_id"></td>
                     <td v-html="patient.pid"></td>
+                    <td>&nbsp;</td>
                 </tr>
             </tbody>
         </table>
