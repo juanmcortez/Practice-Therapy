@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Models\Patients\Patient;
+use App\Http\Models\Patients\Identity;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -14,7 +15,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return json_encode(Patient::orderBy('last_name')->orderBy('first_name')->get());
+        return json_encode(Patient::paginate(100));
     }
 
     /**
