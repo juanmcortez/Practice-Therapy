@@ -26,6 +26,8 @@ public/js/*
 public/fonts/*
 /config/ide-helper.php
 /public/mix-manifest.json
+.vscode
+.vscode/settings.json
 ### CUSTOM ###
 
 
