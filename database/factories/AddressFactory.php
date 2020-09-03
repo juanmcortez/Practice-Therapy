@@ -9,7 +9,7 @@ $factory->define(Address::class, function (Faker $faker) {
     return [
         // Patient data
         'address_1'         => $faker->streetAddress,
-        'address_2'         => $faker->randomElement(['', $faker->secondaryAddress]),
+        'address_2'         => $faker->randomElement([null, $faker->secondaryAddress]),
         'city'              => $faker->city,
         'state'             => $faker->state,
         'zip'               => $faker->postcode,
