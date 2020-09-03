@@ -14,8 +14,8 @@ $factory->define(Identity::class, function (Faker $faker) {
         'middle_name'       => ($rndSex == 'male') ? $faker->firstNameMale : $faker->firstNameFemale,
         'dob'               => $faker->dateTimeThisCentury,
         'sex'               => $rndSex,
-        'ssn'               => $faker->numerify('####-####-####'),
-        'license'           => $faker->numerify('###-#######'),
-        'accession_number'  => $faker->numerify('###-######'),
+        'ssn'               => $faker->numerify('###-##-####'),
+        'license'           => $faker->randomElement([null, $faker->randomLetter . $faker->numerify('###-####-####-##')]),
+        'accession_number'  => $faker->randomElement([null, $faker->randomLetter . $faker->numerify('##-#####')]),
     ];
 });
