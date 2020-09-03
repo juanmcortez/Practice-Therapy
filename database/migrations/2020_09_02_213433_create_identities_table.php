@@ -26,7 +26,6 @@ class CreateIdentitiesTable extends Migration
             $table->string('ssn', 24)->nullable();
             $table->string('license', 24)->nullable();
 
-            $table->string('accession_number', 24)->nullable();
             $table->string('marital_status', 12)->nullable();
             $table->string('user_defined', 128)->nullable();
 

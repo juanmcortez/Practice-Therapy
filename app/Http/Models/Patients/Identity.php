@@ -32,8 +32,8 @@ class Identity extends Model
      * @var array
      */
     protected $fillable = [
-        'last_name', 'first_name', 'middle_name', 'dob', 'sex', 'ssn',
-        'license', 'accession_number', 'marital_status', 'user_defined'
+        'last_name', 'first_name', 'middle_name', 'dob', 'sex',
+        'ssn', 'license', 'marital_status', 'user_defined'
     ];
 
 

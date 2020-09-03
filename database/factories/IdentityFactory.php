@@ -16,6 +16,5 @@ $factory->define(Identity::class, function (Faker $faker) {
         'sex'               => $rndSex,
         'ssn'               => $faker->numerify('###-##-####'),
         'license'           => $faker->randomElement([null, $faker->randomLetter . $faker->numerify('###-####-####-##')]),
-        'accession_number'  => $faker->randomElement([null, $faker->randomLetter . $faker->numerify('##-#####')]),
     ];
 });

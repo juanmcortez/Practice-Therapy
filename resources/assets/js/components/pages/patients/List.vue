@@ -30,7 +30,11 @@
                     <td class="text-capitalize border-left-0" v-html="patient.contact.type"></td>
                     <td v-html="patient.identity.ssn"></td>
                     <td v-html="patient.identity.dob"></td>
-                    <td>&nbsp;</td>
+                    <td
+                        v-if="patient.selection.type == 'acce_numb'"
+                        v-html="patient.selection.selection"
+                    ></td>
+                    <td v-else>--</td>
                     <td v-html="patient.ext_id"></td>
                     <td v-html="patient.pid"></td>
                     <td>&nbsp;</td>
