@@ -17,7 +17,7 @@ class PatientSeeder extends Seeder
     public function run()
     {
         // factory(Patient::class, 13689)->create();
-        factory(Patient::class, 50)->create()->each(
+        factory(Patient::class, 13689)->create()->each(
             function ($patient) {
                 $rndItems = random_int(1, 5);
                 factory(Contact::class, $rndItems)->create(['patient_id' => $patient->pid]);
