@@ -16,10 +16,6 @@ class CreateIdentitiesTable extends Migration
         Schema::create('patients_identity', function (Blueprint $table) {
             $table->id();
 
-            $table->string('last_name', 64);
-            $table->string('first_name', 64);
-            $table->string('middle_name', 64)->nullable();
-
             $table->date('dob')->useCurrent();
             $table->string('sex', 12)->default('male');
 

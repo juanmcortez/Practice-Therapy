@@ -18,6 +18,10 @@ class CreatePatientsTable extends Migration
 
             $table->string('ext_id', 64)->default('xx-xxxx-xxxx');
 
+            $table->string('last_name', 64);
+            $table->string('first_name', 64);
+            $table->string('middle_name', 64)->nullable();
+
             $table->unsignedInteger('identity_id')->nullable();
             $table->unsignedInteger('address_id')->nullable();
             $table->unsignedInteger('employment_id')->nullable();

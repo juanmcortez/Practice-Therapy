@@ -34,7 +34,10 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $fillable = ['ext_id', 'address_id', 'employment_id', 'identity_id'];
+    protected $fillable = [
+        'ext_id', 'last_name', 'first_name', 'middle_name',
+        'address_id', 'employment_id', 'identity_id'
+    ];
 
 
     /**
@@ -46,6 +49,37 @@ class Patient extends Model
         'address', 'contact', 'employment',
         'identity', 'misc', 'option', 'selection'
     ];
+
+
+    protected $appends = ['full_name'];
+
+
+    protected function getFullNameAttribute()
+    {
+        return ($this->middle_name != null)
+            ? $this->last_name . ', ' . $this->first_name . ' ' . $this->middle_name
+            : $this->last_name . ', ' . $this->first_name;
+    }
+
+
+    /**
+     * Get the list of patients
+     */
+    public static function getFullPatientList()
+    {
+        return Patient::without('address', 'employment', 'misc', 'option')
+            ->with([
+                'contact' => function ($query) {
+                    $query->where('type', 'main')->orWhere('type', 'home')->orWhere('type', 'emergency')->orderBy('updated_at');
+                },
+                'selection' => function ($query) {
+                    $query->where('type', 'acce_numb')->orderBy('updated_at');
+                },
+            ])
+            ->orderBy('last_name')
+            ->orderBy('first_name')
+            ->paginate(25);
+    }
 
 
     /**
