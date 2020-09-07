@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'patients', 'namespace' => 'Patient', 'as' => 'patients.'], function () {
-    Route::get('list', 'PatientController@index')->name('list');
+Route::group(['prefix' => 'patients', 'namespace' => 'Patient'], function () {
+    Route::apiResource('list/{filter?}', 'PatientController')->only('index');
 });

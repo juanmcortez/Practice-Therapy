@@ -47,13 +47,24 @@ class Patient extends Model
      */
     protected $with = [
         'address', 'contact', 'employment',
-        'identity', 'misc', 'option', 'selection'
+        'identity', 'misc', 'option',
+        'selection'
     ];
 
 
-    protected $appends = ['full_name'];
+    /**
+     * Dinamically added attributes (Non existent in DB!)
+     *
+     * @var array
+     */
+    protected $appends = ['full_name', 'last_service_date'];
 
 
+    /**
+     * Returns the full name of the patient as string.
+     *
+     * @return String
+     */
     protected function getFullNameAttribute()
     {
         return ($this->middle_name != null)
@@ -61,11 +72,21 @@ class Patient extends Model
             : $this->last_name . ', ' . $this->first_name;
     }
 
+    /**
+     * Return last date of service for the patient
+     *
+     * @return Date
+     */
+    protected function getLastServiceDateAttribute()
+    {
+        return '--';
+    }
+
 
     /**
      * Get the list of patients
      */
-    public static function getFullPatientList()
+    public static function getFullPatientList($filters = '1=1')
     {
         return Patient::without('address', 'employment', 'misc', 'option')
             ->with([
@@ -76,9 +97,10 @@ class Patient extends Model
                     $query->where('type', 'acce_numb')->orderBy('updated_at');
                 },
             ])
+            ->where($filters)
             ->orderBy('last_name')
             ->orderBy('first_name')
-            ->paginate(25);
+            ->paginate(15);
     }
 
 
