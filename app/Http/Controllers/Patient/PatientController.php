@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Patient;
 
 use App\Http\Models\Patients\Patient;
-use App\Http\Models\Patients\Identity;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PatientController extends Controller
 {
@@ -15,7 +15,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return json_encode(Patient::paginate(100));
+        return response()->json(Patient::getFullPatientList());
     }
 
     /**
