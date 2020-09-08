@@ -57,7 +57,7 @@ class Patient extends Model
      *
      * @var array
      */
-    protected $appends = ['full_name', 'last_service_date'];
+    protected $appends = ['full_name', 'last_service_date', 'avatar'];
 
 
     /**
@@ -68,9 +68,10 @@ class Patient extends Model
     protected function getFullNameAttribute()
     {
         return ($this->middle_name != null)
-            ? $this->last_name . ', ' . $this->first_name . ' ' . $this->middle_name
-            : $this->last_name . ', ' . $this->first_name;
+            ? "{$this->last_name}, {$this->first_name} $this->middle_name"
+            : "{$this->last_name}, {$this->first_name}";
     }
+
 
     /**
      * Return last date of service for the patient
@@ -84,20 +85,34 @@ class Patient extends Model
 
 
     /**
+     * Return last date of service for the patient
+     *
+     * @return String
+     */
+    protected function getAvatarAttribute()
+    {
+        return '<i class="fa fa-user-circle"></i>';
+    }
+
+
+    /**
      * Get the list of patients
      */
-    public static function getFullPatientList($filters = '1=1')
+    public static function getFullPatientList($column = null, $filter = '1=1')
     {
         return Patient::without('address', 'employment', 'misc', 'option')
             ->with([
                 'contact' => function ($query) {
-                    $query->where('type', 'main')->orWhere('type', 'home')->orWhere('type', 'emergency')->orderBy('updated_at');
+                    $query->where('type', 'main')
+                        ->orWhere('type', 'home')
+                        ->orWhere('type', 'emergency')
+                        ->orderBy('updated_at');
                 },
                 'selection' => function ($query) {
-                    $query->where('type', 'acce_numb')->orderBy('updated_at');
+                    $query->where('type', 'acce_numb')
+                        ->orderBy('updated_at');
                 },
             ])
-            ->where($filters)
             ->orderBy('last_name')
             ->orderBy('first_name')
             ->paginate(15);

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Models\Patients\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'patients', 'namespace' => 'Patient'], function () {
-    Route::apiResource('list/{filter?}', 'PatientController')->only('index');
+
+    Route::apiResource('list', 'PatientController')->only('index');
+    Route::get('list/search/{column?}/{filter?}', 'PatientController@show');
+
+    Route::apiResource('ledger', 'LedgerController')->only('show');
 });

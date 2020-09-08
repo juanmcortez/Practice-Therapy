@@ -13,53 +13,18 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($filters = null)
+    public function index()
     {
-        return response()->json(Patient::getFullPatientList($filters));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return response()->json(Patient::getFullPatientList($column = null, $filter = '1=1'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Http\Models\Patients\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show($column = null, $filter = null)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Http\Models\Patients\Patient  $patient
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Patient $patient)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Http\Models\Patients\Patient  $patient
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Patient $patient)
-    {
-        //
+        return response()->json(Patient::getFullPatientList($column, $filter));
     }
 }
