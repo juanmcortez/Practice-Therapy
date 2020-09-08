@@ -24,8 +24,8 @@ class Patient extends Model
      * @var array
      */
     protected $hidden = [
-        'address_id', 'contact_id', 'identity_id', 'employment_id', 'misc_id',
-        'option_id', 'selection_id', 'created_at', 'updated_at', 'deleted_at'
+        'address_id', 'identity_id', 'employment_id',
+        'created_at', 'updated_at', 'deleted_at'
     ];
 
 
@@ -35,8 +35,8 @@ class Patient extends Model
      * @var array
      */
     protected $fillable = [
-        'ext_id', 'address_id', 'contact_id', 'employment_id',
-        'identity_id', 'misc_id', 'option_id', 'selection_id'
+        'ext_id', 'last_name', 'first_name', 'middle_name',
+        'address_id', 'employment_id', 'identity_id'
     ];
 
 
@@ -47,8 +47,76 @@ class Patient extends Model
      */
     protected $with = [
         'address', 'contact', 'employment',
-        'identity', 'misc', 'option', 'selection'
+        'identity', 'misc', 'option',
+        'selection'
     ];
+
+
+    /**
+     * Dinamically added attributes (Non existent in DB!)
+     *
+     * @var array
+     */
+    protected $appends = ['full_name', 'last_service_date', 'avatar'];
+
+
+    /**
+     * Returns the full name of the patient as string.
+     *
+     * @return String
+     */
+    protected function getFullNameAttribute()
+    {
+        return ($this->middle_name != null)
+            ? "{$this->last_name}, {$this->first_name} $this->middle_name"
+            : "{$this->last_name}, {$this->first_name}";
+    }
+
+
+    /**
+     * Return last date of service for the patient
+     *
+     * @return Date
+     */
+    protected function getLastServiceDateAttribute()
+    {
+        return '--';
+    }
+
+
+    /**
+     * Return last date of service for the patient
+     *
+     * @return String
+     */
+    protected function getAvatarAttribute()
+    {
+        return '<i class="fa fa-user-circle"></i>';
+    }
+
+
+    /**
+     * Get the list of patients
+     */
+    public static function getFullPatientList($column = null, $filter = '1=1')
+    {
+        return Patient::without('address', 'employment', 'misc', 'option')
+            ->with([
+                'contact' => function ($query) {
+                    $query->where('type', 'main')
+                        ->orWhere('type', 'home')
+                        ->orWhere('type', 'emergency')
+                        ->orderBy('updated_at');
+                },
+                'selection' => function ($query) {
+                    $query->where('type', 'acce_numb')
+                        ->orderBy('updated_at');
+                },
+            ])
+            ->orderBy('last_name')
+            ->orderBy('first_name')
+            ->paginate(15);
+    }
 
 
     /**
@@ -62,7 +130,7 @@ class Patient extends Model
     }
     public function contact()
     {
-        return $this->hasOne(Contact::class, 'id', 'contact_id');
+        return $this->hasMany(Contact::class, 'patient_id', 'pid');
     }
     public function employment()
     {
@@ -74,14 +142,14 @@ class Patient extends Model
     }
     public function misc()
     {
-        return $this->hasOne(Misc::class, 'id', 'misc_id');
+        return $this->hasMany(Misc::class, 'patient_id', 'pid');
     }
     public function option()
     {
-        return $this->hasOne(Option::class, 'id', 'option_id');
+        return $this->hasMany(Option::class, 'patient_id', 'pid');
     }
     public function selection()
     {
-        return $this->hasOne(Selection::class, 'id', 'selection_id');
+        return $this->hasMany(Selection::class, 'patient_id', 'pid');
     }
 }

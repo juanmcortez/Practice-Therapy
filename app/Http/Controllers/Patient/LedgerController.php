@@ -1,13 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Patient;
 
+use App\Http\Controllers\Controller;
 use App\Http\Models\Patients\Patient;
-use App\Http\Models\Patients\Identity;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class LedgerController extends Controller
 {
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Http\Models\Patients\Patient  $ledger
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Patient $ledger)
+    {
+        return $ledger;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,17 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return json_encode(Patient::paginate(100));
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -30,12 +51,12 @@ class PatientController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for editing the specified resource.
      *
      * @param  \App\Http\Models\Patients\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function edit(Patient $patient)
     {
         //
     }

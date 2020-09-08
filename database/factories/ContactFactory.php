@@ -14,11 +14,12 @@ $factory->define(Contact::class, function (Faker $faker) {
 
     return [
         // Patient data
+        'patient_id'    => 0,
         'relation'      => $relation,
         'last_name'     => $faker->lastName,
         'first_name'    => ($rndSex == 'male') ? $faker->firstNameMale : $faker->firstNameFemale,
         'middle_name'   => ($rndSex == 'male') ? $faker->firstNameMale : $faker->firstNameFemale,
-        'type'          => $faker->randomElement(['home', 'mobile', 'emergency']),
+        'type'          => $faker->randomElement(['main', 'home', 'mobile', 'emergency']),
         'phone'         => $faker->numerify('###-###-####'),
         'email'         => $faker->randomElement([null, $faker->safeEmail]),
     ];

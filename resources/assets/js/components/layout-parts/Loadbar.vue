@@ -1,7 +1,7 @@
 <template>
     <div class="progress bg-dark shadow-none" style="height: 3px;">
         <div
-            class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+            class="progress-bar bg-danger"
             role="progressbar"
             :aria-valuenow="percentage"
             :aria-valuemin="minval"

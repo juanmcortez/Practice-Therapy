@@ -23,7 +23,7 @@ class Misc extends Model
      *
      * @var array
      */
-    protected $hidden = ['id', 'created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = ['id', 'patient_id', 'created_at', 'updated_at', 'deleted_at'];
 
 
     /**
@@ -31,7 +31,7 @@ class Misc extends Model
      *
      * @var array
      */
-    protected $fillable = ['type', 'misc'];
+    protected $fillable = ['patient_id', 'type', 'misc'];
 
 
     /**
@@ -41,6 +41,6 @@ class Misc extends Model
      */
     public function patient()
     {
-        return $this->belongsTo(Patient::class, 'id', 'option_id');
+        return $this->hasMany(Patient::class, 'patient_id', 'pid');
     }
 }

@@ -70,6 +70,9 @@ export default {
                 ? (this.newClass = "")
                 : (this.newClass = "PT-sidenav-toggled");
         },
+        updateLoadBar(event) {
+            console.log(event);
+        },
     },
 };
 </script>

@@ -10,7 +10,8 @@ $factory->define(Misc::class, function (Faker $faker) {
 
     return [
         // Patient data
-        'type'  => $typeVal,
-        'misc'  => ($typeVal == 'date_deceased') ? $faker->dateTimeThisDecade() : ''
+        'patient_id'    => 0,
+        'type'          => $typeVal,
+        'misc'          => ($typeVal == 'date_deceased') ? $faker->dateTimeThisDecade() : ''
     ];
 });

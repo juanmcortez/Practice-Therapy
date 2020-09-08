@@ -16,7 +16,8 @@ $factory->define(Option::class, function (Faker $faker) {
 
     return [
         // Patient data
-        'type'      => $typeVal,
-        'option'    => ($typeVal == 'financial_date') ? $faker->dateTimeThisDecade() : ''
+        'patient_id'    => 0,
+        'type'          => $typeVal,
+        'option'        => ($typeVal == 'financial_date') ? $faker->dateTimeThisDecade() : ''
     ];
 });

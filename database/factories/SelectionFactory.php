@@ -15,12 +15,24 @@ $factory->define(Selection::class, function (Faker $faker) {
         ]
     );
 
-    $typeSel = ($typeVal != 'rend_prov' || $typeVal != 'refr_prov' || $typeVal != 'phar_name' || $typeVal != 'leave_msg')
-        ? $faker->randomElement([true, false])
-        : '';
+    switch ($typeVal) {
+        case 'acce_numb':
+            $typeSel = strtoupper($faker->randomLetter) . $faker->numerify('##-#####');
+            break;
+        case 'rend_prov':
+        case 'refr_prov':
+        case 'phar_name':
+        case 'leave_msg':
+            $typeSel = '';
+            break;
+        default:
+            $typeSel = $faker->randomElement([true, false]);
+            break;
+    }
 
     return [
         // Patient data
+        'patient_id'    => 0,
         'type'          => $typeVal,
         'selection'     => $typeSel
     ];

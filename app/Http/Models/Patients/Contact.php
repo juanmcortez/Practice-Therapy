@@ -23,7 +23,7 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $hidden = ['id', 'created_at', 'updated_at', 'deleted_at'];
+    protected $hidden = ['id', 'patient_id', 'created_at', 'updated_at', 'deleted_at'];
 
 
     /**
@@ -31,7 +31,7 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $fillable = ['relation', 'last_name', 'first_name', 'middle_name', 'type', 'phone', 'email'];
+    protected $fillable = ['patient_id', 'relation', 'last_name', 'first_name', 'middle_name', 'type', 'phone', 'email'];
 
 
     /**
@@ -41,6 +41,6 @@ class Contact extends Model
      */
     public function patient()
     {
-        return $this->belongsTo(Patient::class, 'id', 'contact_id');
+        return $this->hasMany(Patient::class, 'patient_id', 'pid');
     }
 }

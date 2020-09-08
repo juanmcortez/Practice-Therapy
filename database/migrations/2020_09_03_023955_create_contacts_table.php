@@ -16,13 +16,15 @@ class CreateContactsTable extends Migration
         Schema::create('patients_contact', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedInteger('patient_id')->nullable();
+
             $table->string('relation', 9)->nullable()->comment('mother / father / family / guardian / emergency');
 
             $table->string('last_name', 64)->nullable();
             $table->string('first_name', 64)->nullable();
             $table->string('middle_name', 64)->nullable();
 
-            $table->string('type', 9)->nullable()->comment('home / mobile / emergency');
+            $table->string('type', 9)->nullable()->comment('main / home / mobile / emergency');
             $table->string('phone', 32)->nullable();
             $table->string('email', 128)->nullable();
 

@@ -16,6 +16,8 @@ class CreateMiscTable extends Migration
         Schema::create('patients_misc', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedInteger('patient_id')->nullable();
+
             $table->string('type', 18)->nullable()->comment('date_deceased / reason_deceased');
 
             $table->string('misc', 128)->nullable();
